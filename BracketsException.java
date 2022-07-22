@@ -1,10 +1,10 @@
-package µÚ¶şÖÜ×÷Òµ;
+package Second work;
 
 public class BracketsException extends Exception{
-    //Ä¬ÈÏ¹¹ÔìÆ÷
+    //é»˜è®¤æ„é€ å™¨
     public BracketsException() {
     }
-    //´øÓĞÏêÏ¸ĞÅÏ¢µÄ¹¹ÔìÆ÷£¬ĞÅÏ¢´æ´¢ÔÚmessageÖĞ
+    //å¸¦æœ‰è¯¦ç»†ä¿¡æ¯çš„æ„é€ å™¨ï¼Œä¿¡æ¯å­˜å‚¨åœ¨messageä¸­
     public BracketsException(String message) {
         super(message);
     }
