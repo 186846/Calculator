@@ -1,21 +1,21 @@
-package µÚ¶şÖÜ×÷Òµ;
+package Second Work;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
-//ÅĞ¶ÏÄãÊäÈëµÄ×Ö·û´®µÄÀ¨ºÅÊÇ·ñ¶Ô³Æ£¬²»¶Ô³ÆµÄ»°£¬½«ÖÕÖ¹³ÌĞò¡£
+//åˆ¤æ–­ä½ è¾“å…¥çš„å­—ç¬¦ä¸²çš„æ‹¬å·æ˜¯å¦å¯¹ç§°ï¼Œä¸å¯¹ç§°çš„è¯ï¼Œå°†ç»ˆæ­¢ç¨‹åºã€‚
 class Symmetry{
     private String str;
     public String getStr(){
        return str;
     }
     public void setStr(String str) throws BracketsException {
-        //ÊµÀı»¯ Stack
+        //å®ä¾‹åŒ– Stack
         Stack<String> stack = new Stack<>();
-        //¼ÙÉèĞŞÕı·¨
-        boolean flag = true;//¼ÙÉèÊÇÆ¥ÅäµÄ
-        //²ğ·Ö×Ö·û´®»ñÈ¡×Ö·û
+        //å‡è®¾ä¿®æ­£æ³•
+        boolean flag = true;//å‡è®¾æ˜¯åŒ¹é…çš„
+        //æ‹†åˆ†å­—ç¬¦ä¸²è·å–å­—ç¬¦
         for (int i = 0; i <str.length(); i++) {
             char c = str.charAt(i);
             if (c == '{') {
@@ -27,32 +27,32 @@ class Symmetry{
             if (c == '(') {
                 stack.push(")");
             }
-            //ÅĞ¶Ï·ûºÅÊÇ·ñÆ¥Åä
+            //åˆ¤æ–­ç¬¦å·æ˜¯å¦åŒ¹é…
             if (c == '}' || c == ']' || c == ')') {
                 if (stack.empty()) {
-                    //ĞŞÕı´¦Àí
+                    //ä¿®æ­£å¤„ç†
                     flag = false;
                     break;
                 }
                 String x = stack.pop();
                 if (x.charAt(0) != c) {
-                    //ĞŞÕı´¦Àí
+                    //ä¿®æ­£å¤„ç†
                     flag = false;
                     break;
                 }
             }
         }
         if (!stack.empty()) {
-            //ĞŞÕı´¦Àí
+            //ä¿®æ­£å¤„ç†
             flag = false;
         }
         if (!flag){
-            throw new BracketsException("ÄãÊäÈëµÄËãÊ½µÄÀ¨ºÅ²»¶Ô³Æ£¡");
+            throw new BracketsException("ä½ è¾“å…¥çš„ç®—å¼çš„æ‹¬å·ä¸å¯¹ç§°ï¼");
         }
         this.str = str;
     }
 }
-//ÅĞ¶Ï½á¹ûÊÇ·ñÒç³öµÄÀà
+//åˆ¤æ–­ç»“æœæ˜¯å¦æº¢å‡ºçš„ç±»
 class OrSpill{
     private double number;
     private final double num1 = 1000000000.0;
@@ -64,7 +64,7 @@ class OrSpill{
 
     public void setNumber(double number) throws SpillException {
         if (number>num1 || number<num2){
-            throw new SpillException("ÄãËù¼ÆËãµÄ½á¹û³¬¹ıÁË¼ÆËã·¶Î§£¬ÖØĞÂÊäÒ»´Î°É£¡");
+            throw new SpillException("ä½ æ‰€è®¡ç®—çš„ç»“æœè¶…è¿‡äº†è®¡ç®—èŒƒå›´ï¼Œé‡æ–°è¾“ä¸€æ¬¡å§ï¼");
         }
         this.number = number;
     }
@@ -75,12 +75,12 @@ public class Calculator {
         System.out.print("Please input: ");
         Scanner in = new Scanner(System.in);
         String Str = in.nextLine();
-        //È¥³ı×Ö·û´®Ç°ºó¿Õ¸ñ
+        //å»é™¤å­—ç¬¦ä¸²å‰åç©ºæ ¼
         String str = Str.trim();
         Symmetry c = new Symmetry();
-        //µÚÒ»²½¡£ÅĞ¶ÏÀ¨ºÅÊÇ·ñ¶Ô³Æ
-        //ÅĞ¶ÏÕâ¸ö×Ö·û´®µÄÀ¨ºÅÊÇ·ñ¶Ô³Æ
-        //Èç¹û²»¶Ô³ÆµÄ»°£¬³ÌĞòÖ±½Ó±¨´í£¬ÇÒÖÕÖ¹³ÌĞò¡£
+        //ç¬¬ä¸€æ­¥ã€‚åˆ¤æ–­æ‹¬å·æ˜¯å¦å¯¹ç§°
+        //åˆ¤æ–­è¿™ä¸ªå­—ç¬¦ä¸²çš„æ‹¬å·æ˜¯å¦å¯¹ç§°
+        //å¦‚æœä¸å¯¹ç§°çš„è¯ï¼Œç¨‹åºç›´æ¥æŠ¥é”™ï¼Œä¸”ç»ˆæ­¢ç¨‹åºã€‚
         try {
             c.setStr(str);
         }catch (BracketsException b){
@@ -88,20 +88,20 @@ public class Calculator {
         }
 
 
-        //µÚ¶ş²½¡£½«×Ö·û´®×ª»¯Îªlist½á¹¹
-        //½«×Ö·û´®×ª»¯Îªlist
+        //ç¬¬äºŒæ­¥ã€‚å°†å­—ç¬¦ä¸²è½¬åŒ–ä¸ºlistç»“æ„
+        //å°†å­—ç¬¦ä¸²è½¬åŒ–ä¸ºlist
         List<String> exList = StrToList(str);
 
 
-        //µÚÈı²½¡£½«list°´ÕÕÒ»¶¨µÄË³ĞòÈëÕ»£¬·½±ãÏÂÒ»²½¼ÆËã
+        //ç¬¬ä¸‰æ­¥ã€‚å°†listæŒ‰ç…§ä¸€å®šçš„é¡ºåºå…¥æ ˆï¼Œæ–¹ä¾¿ä¸‹ä¸€æ­¥è®¡ç®—
         List<String> orderedList = changeToOrder(exList);
 
 
-        //µÚËÄ²½¡£³ö¶ÓÒÀ´Î½øĞĞÔËËã¡£
+        //ç¬¬å››æ­¥ã€‚å‡ºé˜Ÿä¾æ¬¡è¿›è¡Œè¿ç®—ã€‚
         double result = calculator(orderedList);
 
-        //µÚÎå²½£¬ÅĞ¶ÏresultÖµÊÇ·ñÒç³ö
-        //¹æ¶¨resultµÄ½á¹û²»ÄÜ³¬¹ı10Î»£¬²»ÒªÎÊÎÒÎªÊ²Ã´£¬ÒòÎª¼ÆËãÆ÷ÊÇÕâÑù¸ãµÄ¡£
+        //ç¬¬äº”æ­¥ï¼Œåˆ¤æ–­resultå€¼æ˜¯å¦æº¢å‡º
+        //è§„å®šresultçš„ç»“æœä¸èƒ½è¶…è¿‡10ä½ï¼Œä¸è¦é—®æˆ‘ä¸ºä»€ä¹ˆï¼Œå› ä¸ºè®¡ç®—å™¨æ˜¯è¿™æ ·æçš„ã€‚
         OrSpill num = new OrSpill();
         try {
             num.setNumber(result);
@@ -110,27 +110,27 @@ public class Calculator {
         }
 
 
-        //µÚÁù²½¡£Êä³ö½á¹û
+        //ç¬¬å…­æ­¥ã€‚è¾“å‡ºç»“æœ
         System.out.printf(str+"=%.2f\n",result);
     }
 
 
 
-    //µÚ¶ş²½¡£½«×Ö·û´®×ª»¯Îªlist½á¹¹
+    //ç¬¬äºŒæ­¥ã€‚å°†å­—ç¬¦ä¸²è½¬åŒ–ä¸ºlistç»“æ„
     private static List<String> StrToList(String str) {
         int index = 0;
         List<String> list = new ArrayList<>();
         while (index<str.length()){
-            char ch = str.charAt(index);//»ñÈ¡strÔªËØµÄascllÂëÖµ
-            //ÕâĞ©×Ö·û°üÀ¨ÁËÀ¨ºÅºÍ²Ù×÷·û(+,-,*,/)
+            char ch = str.charAt(index);//è·å–strå…ƒç´ çš„ascllç å€¼
+            //è¿™äº›å­—ç¬¦åŒ…æ‹¬äº†æ‹¬å·å’Œæ“ä½œç¬¦(+,-,*,/)
             if(ch!=46 && (ch <= 47 || ch >= 58)){
-                //ÊÇ²Ù×÷·û£¬Ö±½ÓÌí¼ÓÖÁlistÖĞ
+                //æ˜¯æ“ä½œç¬¦ï¼Œç›´æ¥æ·»åŠ è‡³listä¸­
                 index ++ ;
                 list.add(ch+"");
             }else{
-                //ÊÇÊı×Ö,ÅĞ¶Ï¶àÎ»ÊıµÄÇé¿ö
-                //ÆäÖĞÓĞÄÜ±íÊ¾Ğ¡ÊıµÄ×Ö·û´®
-                //ascllÂëÖµµÄ48µ½57Îª0µ½9µÄ×Ö·û£¬¶ø¡°.¡±Ğ¡ÊıµãµÄascllÂëÖµÎª46
+                //æ˜¯æ•°å­—,åˆ¤æ–­å¤šä½æ•°çš„æƒ…å†µ
+                //å…¶ä¸­æœ‰èƒ½è¡¨ç¤ºå°æ•°çš„å­—ç¬¦ä¸²
+                //ascllç å€¼çš„48åˆ°57ä¸º0åˆ°9çš„å­—ç¬¦ï¼Œè€Œâ€œ.â€å°æ•°ç‚¹çš„ascllç å€¼ä¸º46
                 String str1 = "";
                 while (index < str.length() && (str.charAt(index) >47 && str.charAt(index) < 58 || str.charAt(index)==46)){
                     str1+= str.charAt(index);
@@ -143,50 +143,50 @@ public class Calculator {
     }
 
 
-    //µÚÈı²½¡£½«list°´ÕÕÒ»¶¨µÄË³ĞòÈëÕ»£¬·½±ãÏÂÒ»²½¼ÆËã
+    //ç¬¬ä¸‰æ­¥ã€‚å°†listæŒ‰ç…§ä¸€å®šçš„é¡ºåºå…¥æ ˆï¼Œæ–¹ä¾¿ä¸‹ä¸€æ­¥è®¡ç®—
     private static List<String> changeToOrder(List<String> exList) {
-        //´´½¨Ò»¸öÕ»ÓÃÓÚ±£´æ²Ù×÷·û
+        //åˆ›å»ºä¸€ä¸ªæ ˆç”¨äºä¿å­˜æ“ä½œç¬¦
         Stack<String> operatorStack = new Stack<>();
-        //´´½¨Ò»¸ölist±£´æÓĞĞòµÄ×Ö·ûË³Ğò(ºó×º±í´ïÊ½×Ó£ºµ¥ĞĞÄæ²¨À¼±í´ïÊ½£©
-        //Õâ¸öÎÒÊÇÔÚcsdnÉÏ¿´µ½µÄ¡£
+        //åˆ›å»ºä¸€ä¸ªlistä¿å­˜æœ‰åºçš„å­—ç¬¦é¡ºåº(åç¼€è¡¨è¾¾å¼å­ï¼šå•è¡Œé€†æ³¢å…°è¡¨è¾¾å¼ï¼‰
+        //è¿™ä¸ªæˆ‘æ˜¯åœ¨csdnä¸Šçœ‹åˆ°çš„ã€‚
         List<String> orderedList = new ArrayList<>();
-        //½ÓÏÂÀ´ÊÇ¾ßÌå²Ù×÷
+        //æ¥ä¸‹æ¥æ˜¯å…·ä½“æ“ä½œ
         for (String value:exList) {
-            //°´Ë³Ğò½«²Ù×÷·ûÌîÈëlist£¨Á½ÊıÒ»²Ù×÷·ûºÅ£©(×ÜË¼Ïë)
+            //æŒ‰é¡ºåºå°†æ“ä½œç¬¦å¡«å…¥listï¼ˆä¸¤æ•°ä¸€æ“ä½œç¬¦å·ï¼‰(æ€»æ€æƒ³)
             if (isOperator(value)) {
-                //ÅĞ¶ÏoperatorStackÊÇ·ñÎª¿Õ,»¹ÓĞ¾ÍÊÇÓÅÏÈ¼¶(Ö÷ÒªÊÇ¶Ô¼Ó¼õ³Ë³ı½øĞĞÅĞ¶Ï£¬¶ÔĞ¡À¨ºÅ²»½øĞĞÅĞ¶Ï)£¬¾ö¶¨ÁËÈë¶ÓË³Ğò
+                //åˆ¤æ–­operatorStackæ˜¯å¦ä¸ºç©º,è¿˜æœ‰å°±æ˜¯ä¼˜å…ˆçº§(ä¸»è¦æ˜¯å¯¹åŠ å‡ä¹˜é™¤è¿›è¡Œåˆ¤æ–­ï¼Œå¯¹å°æ‹¬å·ä¸è¿›è¡Œåˆ¤æ–­)ï¼Œå†³å®šäº†å…¥é˜Ÿé¡ºåº
                 if (operatorStack.empty() || "(".equals(operatorStack.peek()) || priority(value) > priority(operatorStack.peek())) {
-                    //²Ù×÷·ûÔİÊ±ÈëÕ»
+                    //æ“ä½œç¬¦æš‚æ—¶å…¥æ ˆ
                     operatorStack.push(value);
                 } else {
-                    //·ñÔò½«Õ»ÖĞÔªËØ³öÕ»Èç¶Ó£¬Ö±µ½Óöµ½´óÓÚµ±Ç°²Ù×÷·û»òÕßÓöµ½×óÀ¨ºÅÊ±
+                    //å¦åˆ™å°†æ ˆä¸­å…ƒç´ å‡ºæ ˆå¦‚é˜Ÿï¼Œç›´åˆ°é‡åˆ°å¤§äºå½“å‰æ“ä½œç¬¦æˆ–è€…é‡åˆ°å·¦æ‹¬å·æ—¶
                     while (!operatorStack.isEmpty() && !"(".equals(operatorStack.peek())) {
                         if (priority(value) <= priority(operatorStack.peek())) {
                             orderedList.add(operatorStack.pop());
                         }
                     }
-                    //µ±Ç°²Ù×÷·ûÑ¹Õ»
+                    //å½“å‰æ“ä½œç¬¦å‹æ ˆ
                     operatorStack.push(value);
                 }
-            } //Êı×ÖÖ±½ÓÈë¶Ó
+            } //æ•°å­—ç›´æ¥å…¥é˜Ÿ
             else if (isNum(value)) {
                 orderedList.add(value);
             }
-            //Æ¥Åä¡°£¨¡±
+            //åŒ¹é…â€œï¼ˆâ€
             else if ("(".equals(value)){
-                //"("Ñ¹Õ»
+                //"("å‹æ ˆ
                 operatorStack.add(value);
             }
-            //Æ¥Åä")"£¬½øĞĞ³öÕ»²Ù×÷
+            //åŒ¹é…")"ï¼Œè¿›è¡Œå‡ºæ ˆæ“ä½œ
             else if (")".equals(value)){
-                //"("ÊÇÔÚÕ»µÄ×îµÍ²ã£¬ÉÏÃæ¿ÉÄÜÓĞ¼Ó¼õ³Ë³ıËÄÖÖ·ûºÅ
+                //"("æ˜¯åœ¨æ ˆçš„æœ€ä½å±‚ï¼Œä¸Šé¢å¯èƒ½æœ‰åŠ å‡ä¹˜é™¤å››ç§ç¬¦å·
                 while (!operatorStack.isEmpty()){
                     if("(".equals(operatorStack.peek())){
-                        //´ËÊ±Ğ¡À¨ºÅµÄ²¿·Ö½áÊøÅĞ¶Ï
+                        //æ­¤æ—¶å°æ‹¬å·çš„éƒ¨åˆ†ç»“æŸåˆ¤æ–­
                         operatorStack.pop();
                         break;
                     }
-                    //ÕâÊÇ»¹ÓĞ³ı"("Íâ»¹ÓĞÆäËû²Ù×÷·û
+                    //è¿™æ˜¯è¿˜æœ‰é™¤"("å¤–è¿˜æœ‰å…¶ä»–æ“ä½œç¬¦
                     else {
                         orderedList.add(operatorStack.pop());
                     }
@@ -196,10 +196,10 @@ public class Calculator {
                 orderedList.add(value);
             }
             else {
-                throw new RuntimeException("ÓĞ·Ç·¨×Ö·û£¡");
+                throw new RuntimeException("æœ‰éæ³•å­—ç¬¦ï¼");
             }
         }
-        //Ñ­»·Íê±Ï£¬Èç¹û²Ù×÷·ûÕ»ÖĞÔªËØ²»Îª¿Õ£¬½«Õ»ÖĞÔªËØ³öÕ»Èë¶Ó
+        //å¾ªç¯å®Œæ¯•ï¼Œå¦‚æœæ“ä½œç¬¦æ ˆä¸­å…ƒç´ ä¸ä¸ºç©ºï¼Œå°†æ ˆä¸­å…ƒç´ å‡ºæ ˆå…¥é˜Ÿ
         while (!operatorStack.isEmpty()){
             orderedList.add(operatorStack.pop());
         }
@@ -208,17 +208,17 @@ public class Calculator {
 
     //
     private static boolean isNum(String value) {
-        //ÕâÀïÕıÔòÆ¥ÅäÊı
+        //è¿™é‡Œæ­£åˆ™åŒ¹é…æ•°
         return value.matches("^([0-9]{1,}[.][0-9]*)$") || value.matches("^([0-9]{1,})$");
     }
 
-    //ÅĞ¶ÏÊÇ·ñÎª´Ó²Ù×÷·ûºÅ
+    //åˆ¤æ–­æ˜¯å¦ä¸ºä»æ“ä½œç¬¦å·
     private static boolean isOperator(String value) {
-        //ÕâÀïÓÃµ½ÁËÕıÔò
+        //è¿™é‡Œç”¨åˆ°äº†æ­£åˆ™
        return value.equals("+")||value.equals("-")||value.equals("*")||value.equals("/");
     }
 
-    //²Ù×÷·ûÓÅÏÈ¼¶ÅĞ¶Ï
+    //æ“ä½œç¬¦ä¼˜å…ˆçº§åˆ¤æ–­
     public static int priority(String operator){
         if (operator.equals("*")||operator.equals("/")){
             return 1;
@@ -231,31 +231,31 @@ public class Calculator {
 
 
 
-    //µÚËÄ²½¡£³ö¶ÓÒÀ´Î½øĞĞÔËËã
+    //ç¬¬å››æ­¥ã€‚å‡ºé˜Ÿä¾æ¬¡è¿›è¡Œè¿ç®—
     public static double calculator(List<String> list){
-        //ÁÙÊ±¶¨ÒåÒ»¸öÕ»£¬ÓÃÀ´´¢´æÊı×ÖºÍ¼ÆËã³öÀ´µÄÊı×Ö
+        //ä¸´æ—¶å®šä¹‰ä¸€ä¸ªæ ˆï¼Œç”¨æ¥å‚¨å­˜æ•°å­—å’Œè®¡ç®—å‡ºæ¥çš„æ•°å­—
         Stack<Double> NumStack = new Stack<>();
         for (String item:list){
             if (item.matches("^([0-9]{1,}[.][0-9]*)$") || item.matches("^([0-9]{1,})$")){
-                //ÊÇÊı×Ö
+                //æ˜¯æ•°å­—
                 NumStack.push(Double.parseDouble(item));
-            }//²»ÊÇÊı×ÖµÄ»°¾ÍÊÇ²Ù×÷·û
+            }//ä¸æ˜¯æ•°å­—çš„è¯å°±æ˜¯æ“ä½œç¬¦
             else{
-                //È¡³öÕ»ÇøµÄÕ»¶¥µÄÁ½¸öÊı
+                //å–å‡ºæ ˆåŒºçš„æ ˆé¡¶çš„ä¸¤ä¸ªæ•°
                 double n1 = NumStack.pop();
                 double n2 = NumStack.pop();
-                //¶¨ÒåÒ»¸ödoubleĞÍµÄ±äÁ¿£¬À´¼ÇÂ¼Á½¸öÊıµÄÔËËã½á¹û
+                //å®šä¹‰ä¸€ä¸ªdoubleå‹çš„å˜é‡ï¼Œæ¥è®°å½•ä¸¤ä¸ªæ•°çš„è¿ç®—ç»“æœ
                 double res = switch (item) {
                     case "+" -> n1 + n2;
                     case "-" -> n1 - n2;
                     case "*" -> n1 * n2;
                     case "/" -> n1 / n2;
-                    default -> throw new RuntimeException("ÔËËã·û´íÎó£¡");
+                    default -> throw new RuntimeException("è¿ç®—ç¬¦é”™è¯¯ï¼");
                 };
                 NumStack.push(res);
             }
         }
-        //·µ»ØNumStackÀïÃæ×îºóÊ£ÏÂÁËµÄÊıÖµ£¬Õâ¸öÊıÖµ¾ÍÎÒÃÇËùÇó×Ö·û´®µÄ½á¹û
+        //è¿”å›NumStacké‡Œé¢æœ€åå‰©ä¸‹äº†çš„æ•°å€¼ï¼Œè¿™ä¸ªæ•°å€¼å°±æˆ‘ä»¬æ‰€æ±‚å­—ç¬¦ä¸²çš„ç»“æœ
         return NumStack.pop();
     }
 }
