@@ -1,10 +1,10 @@
-package µÚ¶şÖÜ×÷Òµ;
+package Second Work;
 
 public class SpillException extends Exception{
-    //Ä¬ÈÏ¹¹ÔìÆ÷
+    //é»˜è®¤æ„é€ å™¨
     public SpillException() {
     }
-    //´øÓĞÏêÏ¸ĞÅÏ¢µÄ¹¹ÔìÆ÷£¬ĞÅÏ¢´æ´¢ÔÚmessageÖĞ
+    //å¸¦æœ‰è¯¦ç»†ä¿¡æ¯çš„æ„é€ å™¨ï¼Œä¿¡æ¯å­˜å‚¨åœ¨messageä¸­
     public SpillException(String message) {
         super(message);
     }
